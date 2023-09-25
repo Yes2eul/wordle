@@ -1,4 +1,4 @@
-const answer = "APPLE"; // 정답
+// const answer = "APPLE"; // 정답
 
 let attempts = 0;
 let index = 0;
@@ -27,8 +27,12 @@ function appStart() {
     clearInterval(timer);
   };
 
-  const handleEenterKey = () => {
+  const handleEenterKey = async () => {
     let correct = 0; // 맞은 갯수
+
+    // 서버에 응답을 받아오는 코드
+    const respond = await fetch("/answer"); // 응답
+    const answer = await respond.json(); // 정답
 
     for (let i = 0; i < 5; i++) {
       const block = document.querySelector(
